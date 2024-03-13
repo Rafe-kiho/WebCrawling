@@ -147,8 +147,11 @@ async def main_async():
         options = webdriver.ChromeOptions()
         options.add_argument("headless")
         browser0 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
+        browser1 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
+        browser2 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
+        browser3 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
         time.sleep(3)  # 브라우저 열고 잠깐 기다림
-        browserList = [browser0]
+        browserList = [browser0, browser1, browser2, browser3]
         idx = 0
         currBrowser = browserList[idx]
 
@@ -162,8 +165,11 @@ async def main_async():
                 options = webdriver.ChromeOptions()
                 options.add_argument("headless")
                 browser0 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
+                browser1 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
+                browser2 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
+                browser3 = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)  # 브라우저 실행
                 time.sleep(3)  # 브라우저 열고 잠깐 기다림
-                browserList = [browser0]
+                browserList = [browser0, browser1, browser2, browser3]
                 idx = 0
                 currBrowser = browserList[idx]
 
@@ -206,9 +212,8 @@ print("today : ", todayFileNameFormatting)
 print("20초 후 크롬드라이버 실행. 세션을 종료하세요")
 time.sleep(20)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main_async())  # 비동기
-loop.close()
+
+asyncio.run(main_async())
 
 # Running Time Check
 endTime = datetime.today()
